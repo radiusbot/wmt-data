@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "sources": {
+    "ntes": {
+      "baseUrl": "https://enquiry.indianrail.gov.in/mntes/",
+      "userAgent": "Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36",
+      "minIntervalMs": 1000,
+      "csrfPath": "GetCSRFToken",
+      "trainListPath": "javascripts/train_data.js",
+      "stationListPath": "javascripts/station_data.js",
+      "errorPanelPattern": "<div class=\"w3-panel w3-round w3-red\">\\s*<h4>([^<]+)</h4>"
+    },
+    "schedule": {
+      "path": "q?opt=TrainServiceSchedule&subOpt=show",
+      "originMarker": "SRC",
+      "destinationMarker": "DSTN"
+    },
+    "liveStatus": {
+      "path": "tr?opt=TrainRunning&subOpt=FindRunningInstance",
+      "tabPanePattern": "<div class=\"tab-pane[^\"]*\" id=\"train(\\d{1,2}-[a-z]{3}-\\d{4})\"",
+      "stopRowClass": "stopRow",
+      "expectedMarker": "*",
+      "stateKeywords": {
+        "yetToStart": ["Yet to start"],
+        "cancelled": ["Fully Cancelled", "Cancelled"],
+        "partiallyCancelled": ["Partially Cancelled", "Short Terminated", "Short Originated"],
+        "diverted": ["Diverted"],
+        "rescheduled": ["Rescheduled"]
+      }
+    },
+    "stationBoard": {
+      "path": "q?opt=LiveStation&subOpt=show",
+      "allowedHours": [2, 4, 8]
+    },
+    "trainsBetween": {
+      "path": "q?opt=TrainsBetweenStation&subOpt=tbs",
+      "rowSelector": "tr.train-row"
+    },
+    "pnr": {
+      "enquiryUrl": "https://www.indianrail.gov.in/enquiry/PNR/PnrEnquiry.html?locale=en",
+      "pnrInputId": "inputPnrNo",
+      "journeyTableId": "journeyDetailsTable",
+      "passengerTableId": "psgnDetailsTable",
+      "otherTableId": "otherDetailsTable",
+      "errorMessageId": "errorMessage",
+      "captchaErrorKeywords": ["captcha"],
+      "notFoundKeywords": ["FLUSHED", "NOT YET GENERATED", "INVALID PNR", "PNR No. is not valid"],
+      "chartPreparedText": "Chart Prepared"
+    }
+  }
+}

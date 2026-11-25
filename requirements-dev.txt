@@ -1,0 +1,4 @@
+# Dev and CI tooling only. The validator itself uses the standard library.
+pytest==9.2.0
+ruff==0.17.6
+mypy==2.4.1

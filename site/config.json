@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "sources": {
+    "liveStatus": true,
+    "pnr": true,
+    "stationBoard": true,
+    "coachPosition": true,
+    "referenceData": true,
+    "schedule": true,
+    "trainsBetween": true
+  },
+  "bannerAds": true,
+  "minSupportedAppVersion": "1.0.0",
+  "notice": null
+}
