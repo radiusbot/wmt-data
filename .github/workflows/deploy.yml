@@ -23,6 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
+      actions: read # deploy-pages looks up the uploaded artifact
       pages: write
       id-token: write
     environment:
