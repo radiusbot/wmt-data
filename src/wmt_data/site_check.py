@@ -14,7 +14,14 @@ from pathlib import Path
 
 CONFIG_FILE = "config.json"
 PARSER_CONFIG_FILE = "parser-config.json"
-REQUIRED_SITE_FILES = ("index.html", "privacy.html", "terms.html", CONFIG_FILE, PARSER_CONFIG_FILE)
+REQUIRED_SITE_FILES = (
+    "index.html",
+    "privacy.html",
+    "terms.html",
+    "support.html",
+    CONFIG_FILE,
+    PARSER_CONFIG_FILE,
+)
 
 CONFIG_SCHEMA_VERSION = 1
 # Mirrors the Dart enum `LiveSource` (app/lib/domain/settings.dart).

@@ -34,7 +34,7 @@ def valid_config() -> dict[str, object]:
 
 def write_site(site: Path, *, parser_version: int = 3) -> None:
     site.mkdir(parents=True, exist_ok=True)
-    for name in ("index.html", "privacy.html", "terms.html"):
+    for name in ("index.html", "privacy.html", "terms.html", "support.html"):
         (site / name).write_text("<!doctype html>", encoding="utf-8")
     (site / "config.json").write_text(json.dumps(valid_config()), encoding="utf-8")
     (site / "parser-config.json").write_text(
@@ -159,11 +159,14 @@ def test_published_config_matches_contract() -> None:
 
 def test_published_pages_exist_and_link_legal_pages() -> None:
     index = (PUBLISHED_SITE / "index.html").read_text(encoding="utf-8")
+    assert 'href="support.html"' in index
     assert 'href="privacy.html"' in index
     assert 'href="terms.html"' in index
-    for name in ("privacy.html", "terms.html"):
+    for name in ("privacy.html", "terms.html", "support.html"):
         page = (PUBLISHED_SITE / name).read_text(encoding="utf-8")
         assert "not affiliated" in page
+    support = (PUBLISHED_SITE / "support.html").read_text(encoding="utf-8")
+    assert "mailto:radiusbot@gmail.com" in support
 
 
 # sync-parser-config
